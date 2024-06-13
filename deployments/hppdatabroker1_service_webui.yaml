@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hppdatabroker1webui
+spec:
+  ports:
+  - name: webui
+    nodePort: 31882
+    port: 31882
+    targetPort: 8062
+  selector:
+    app: hppdatabroker1
+  type: NodePort

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hppdatabroker1
+  name: hppdatabroker1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hppdatabroker1
+  template:
+    metadata:
+      labels:
+        app: hppdatabroker1
+    spec:
+      containers:
+      - image: cicd.ai4eu-dev.eu:7444/tutorials/house_price_prediction/hpp_databroker:v4
+        imagePullPolicy: Always
+        name: hppdatabroker1
+        ports:
+        - containerPort: 8061
+          name: protobuf-api
+        - containerPort: 8062
+          name: webui

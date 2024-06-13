@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hppmodel1
+  name: hppmodel1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hppmodel1
+  template:
+    metadata:
+      labels:
+        app: hppmodel1
+    spec:
+      containers:
+      - image: cicd.ai4eu-dev.eu:7444/tutorials/house_price_prediction/hpp_predictor:v4
+        imagePullPolicy: Always
+        name: hppmodel1
+        ports:
+        - containerPort: 8061
+          name: protobuf-api
+        - containerPort: 8062
+          name: webui

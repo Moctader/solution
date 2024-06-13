@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hppdatabroker1
+spec:
+  ports:
+  - name: protobuf-api
+    nodePort: 31463
+    port: 31463
+    targetPort: 8061
+  selector:
+    app: hppdatabroker1
+  type: NodePort
